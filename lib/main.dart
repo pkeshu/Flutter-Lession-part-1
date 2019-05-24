@@ -1,32 +1,34 @@
 import 'package:flutter/material.dart';
+import './product_manager.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    var assetImage = new AssetImage("assets/loginback.jpg");
     return MaterialApp(
+      theme: ThemeData(
+          primarySwatch: Colors.deepOrange,
+          brightness: Brightness.light,
+          accentColor: Colors.deepPurple),
       home: Scaffold(
           appBar: AppBar(
             title: Text("Easy List"),
           ),
-          body: Column(
-            children: [
+          body: Stack(
+            children: <Widget>[
               Container(
-                margin: EdgeInsets.all(10.0),
-                child: RaisedButton(
-                  onPressed: () {},
-                  child: Text("Add Products"),
+                decoration: new BoxDecoration(
+                  image:
+                      new DecorationImage(image: assetImage, fit: BoxFit.cover),
                 ),
               ),
-              Card(
-                child: Column(
-                  children: <Widget>[
-                    Image.asset('assets/food.jpg'),
-                    Text("Food Paradise")
-                  ],
+              new Center(
+                child: ProductManager(
+                  startingProduct: "Food Tester",
                 ),
-              ),
+              )
             ],
           )),
     );
